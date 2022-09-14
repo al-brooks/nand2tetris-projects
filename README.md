@@ -1,7 +1,7 @@
 # Elements of Computing Systems:
 
-Building a Modern Computer from First Principles
-Nand2Tetris: https://www.nand2tetris.org/
+Building a Modern Computer from First Principles\
+Nand2Tetris: https://www.nand2tetris.org/\
 Repo for my work on all projects in this course.
 
 ## Project Topics
