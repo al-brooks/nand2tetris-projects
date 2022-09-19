@@ -17,4 +17,10 @@ CHIP DMux8Way {
 
     PARTS:
     // Put your code here:
+    // First DMux is used to split group by msb
+    // 0 means data goes to a b c or b
+    // 1 means data goes to e f g or h
+    DMux(in=in, sel=sel[2], a=in1, b=in2);
+    DMux4Way(in=in1, sel=sel[0..1], a=a, b=b, c=c, d=d);
+    DMux4Way(in=in2, sel=sel[0..1], a=e, b=f, c=g, d=h);
 }
