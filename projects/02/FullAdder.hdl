@@ -14,4 +14,10 @@ CHIP FullAdder {
 
     PARTS:
     // Put you code here:
+    // value from a + b - only will carry if a & b are 1
+    HalfAdder(a=a, b=b, sum=sum1, carry=carry1);
+    // now we do sum + c. We have to worry about the old carry for scenario above
+    HalfAdder(a=sum1, b=c, sum=sum, carry=carry2);
+    // If we have the carry from a & b == 1 this will take it into account
+    Or(a=carry1, b=carry2, out=carry);
 }
