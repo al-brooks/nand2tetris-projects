@@ -15,4 +15,8 @@ CHIP Bit {
 
     PARTS:
     // Put your code here:
+    Mux(a=outDFF, b=in, sel=load, out=data);
+    // one DFF out gets fed into the Mux chip (in case load = 0)
+    // the other out is our new/old value
+    DFF(in=data, out=outDFF, out=out);
 }
