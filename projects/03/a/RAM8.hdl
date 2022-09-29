@@ -16,4 +16,22 @@ CHIP RAM8 {
 
     PARTS:
     // Put your code here:
+    // Implementation 1:
+    // We use Dmux in order to make sure we only write to 1 register
+    // this is based on the address[3] input (only one register will be given a
+    // load value of 1)
+    DMux8Way(in=load, sel=address, a=load1, b=load2, c=load3, d=load4, e=load5, f=load6, g=load7, h=load8);
+    // We load the corresponding load value (if 1, it will only be for 1 register)
+    // the rest will be load = 0, so we won't accidentally overwrite their data
+    Register(in=in, load=load1, out=reg1);
+    Register(in=in, load=load2, out=reg2);
+    Register(in=in, load=load3, out=reg3);
+    Register(in=in, load=load4, out=reg4);
+    Register(in=in, load=load5, out=reg5);
+    Register(in=in, load=load6, out=reg6);
+    Register(in=in, load=load7, out=reg7);
+    Register(in=in, load=load8, out=reg8);
+    // Once all values are calculated, we return the single register at given address
+    // using a Mux chip
+    Mux8Way16(a=reg1, b=reg2, c=reg3, d=reg4, e=reg5, f=reg6, g=reg7, h=reg8, sel=address, out=out);
 }
