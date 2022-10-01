@@ -17,4 +17,13 @@ CHIP PC {
 
     PARTS:
     // Put your code here:
+    // Flipped my logic
+    // We start with our else statement and then proceed
+    // with Mux chips to update the value if the higher
+    // priority signal is there
+    Inc16(in=regDFF, out=regInc);
+    Mux16(a=regDFF, b=regInc, sel=inc, out=incOut);
+    Mux16(a=incOut, b=in, sel=load, out=loadOut);
+    Mux16(a=loadOut, b=false, sel=reset, out=resetOut);
+    Register(in=resetOut, load=true, out=regDFF, out=out);
 }
